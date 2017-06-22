@@ -23,3 +23,10 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController {
+    // MARK: 设置导航栏
+    private func setupNavigationBar() {
+//        setupNavigationLeftBar()
+//        setupNavigationRightBar()
+    }
+}
