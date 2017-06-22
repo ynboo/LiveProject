@@ -75,6 +75,10 @@
 		F8201BF01EFA5F02007BD6F8 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				F8CBF47B1EFB9ACB0027586A /* Controller */,
+				F8CBF4781EFB9A960027586A /* Model */,
+				F8CBF4791EFB9A960027586A /* View */,
+				F8CBF47A1EFB9A960027586A /* ViewModel */,
 			);
 			name = "Home(首页)";
 			path = Home;
@@ -164,6 +168,34 @@
 				F83D765E1EF9FE8D008B71D9 /* Info.plist */,
 			);
 			path = LiveDemo;
+			sourceTree = "<group>";
+		};
+		F8CBF4781EFB9A960027586A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8CBF4791EFB9A960027586A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8CBF47A1EFB9A960027586A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F8CBF47B1EFB9ACB0027586A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
