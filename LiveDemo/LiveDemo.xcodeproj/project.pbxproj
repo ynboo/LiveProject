@@ -16,7 +16,6 @@
 		F8201C051EFA5F02007BD6F8 /* btn_user_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8201BFD1EFA5F02007BD6F8 /* btn_user_normal@2x.png */; };
 		F8201C061EFA5F02007BD6F8 /* btn_user_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8201BFE1EFA5F02007BD6F8 /* btn_user_normal@3x.png */; };
 		F83D76531EF9FE8D008B71D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D76521EF9FE8D008B71D9 /* AppDelegate.swift */; };
-		F83D76551EF9FE8D008B71D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D76541EF9FE8D008B71D9 /* ViewController.swift */; };
 		F83D76581EF9FE8D008B71D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F83D76561EF9FE8D008B71D9 /* Main.storyboard */; };
 		F83D765A1EF9FE8D008B71D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F83D76591EF9FE8D008B71D9 /* Assets.xcassets */; };
 		F83D765D1EF9FE8D008B71D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F83D765B1EF9FE8D008B71D9 /* LaunchScreen.storyboard */; };
@@ -33,7 +32,6 @@
 		F8201BFE1EFA5F02007BD6F8 /* btn_user_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_user_normal@3x.png"; sourceTree = "<group>"; };
 		F83D764F1EF9FE8D008B71D9 /* LiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83D76521EF9FE8D008B71D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F83D76541EF9FE8D008B71D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F83D76571EF9FE8D008B71D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F83D76591EF9FE8D008B71D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F83D765C1EF9FE8D008B71D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,6 +109,7 @@
 		F8201BF41EFA5F02007BD6F8 /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				F8A77FFE1F0B363700AE57B2 /* Extension */,
 			);
 			name = "Tools(工具)";
 			path = Tools;
@@ -161,13 +160,19 @@
 				F8201BEE1EFA5F02007BD6F8 /* Classes */,
 				F8201BF51EFA5F02007BD6F8 /* Resources */,
 				F83D76521EF9FE8D008B71D9 /* AppDelegate.swift */,
-				F83D76541EF9FE8D008B71D9 /* ViewController.swift */,
 				F83D76561EF9FE8D008B71D9 /* Main.storyboard */,
 				F83D76591EF9FE8D008B71D9 /* Assets.xcassets */,
 				F83D765B1EF9FE8D008B71D9 /* LaunchScreen.storyboard */,
 				F83D765E1EF9FE8D008B71D9 /* Info.plist */,
 			);
 			path = LiveDemo;
+			sourceTree = "<group>";
+		};
+		F8A77FFE1F0B363700AE57B2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		F8CBF4781EFB9A960027586A /* Model */ = {
@@ -279,7 +284,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F83D76551EF9FE8D008B71D9 /* ViewController.swift in Sources */,
 				F83D76531EF9FE8D008B71D9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
