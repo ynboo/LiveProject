@@ -14,7 +14,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        addChildVC("home")
+        addChildVC("Home")
         addChildVC("Live")
         addChildVC("Follow")
         addChildVC("Profile")
@@ -27,7 +27,6 @@ class MainViewController: UITabBarController {
         
         //2.将ChildVc做为子控制器
         addChildViewController(childVC!)
-        
     }
 
     override func didReceiveMemoryWarning() {
