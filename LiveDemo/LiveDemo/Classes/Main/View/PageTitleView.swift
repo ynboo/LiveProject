@@ -12,10 +12,11 @@ private let kScrollLineH : CGFloat = 2.0
 
 class PageTitleView: UIView {
 
-    //Mark:- 定义属性
+    //MARK:- 定义属性
     fileprivate var titles : [String]
     
-    //mark:- 懒加载属性
+    //MARK:- 懒加载属性
+    fileprivate lazy var titleLabels : [UILabel] = [UILabel]()
     fileprivate lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
@@ -24,7 +25,13 @@ class PageTitleView: UIView {
         return scrollView
     }()
     
-    //Mark:- 自定义构造函数
+    fileprivate lazy var scrollLine : UIView = {
+        let scrollLine = UIView()
+        scrollLine.backgroundColor = UIColor.orange
+        return scrollLine
+    }()
+    
+    //MARK:- 自定义构造函数
     init(frame: CGRect, titles: [String]) {
         self.titles = titles
         
@@ -40,7 +47,7 @@ class PageTitleView: UIView {
     
 }
 
-//Mark:- 设置UI界面
+//MARK:- 设置UI界面
 extension PageTitleView{
     fileprivate func setupUI(){
         
@@ -50,6 +57,9 @@ extension PageTitleView{
         
         //2.添加Title对应的Label
         setupTitleLabels()
+        
+        //3.设置底线和滚动的滑块
+        setupBottomMenuAndScrollLine()
     }
     
     fileprivate func setupTitleLabels(){
@@ -76,6 +86,25 @@ extension PageTitleView{
             
             //4.将label添加到scrollView中
             scrollView.addSubview(label)
+            titleLabels.append(label)
         }
+    }
+    
+    fileprivate func setupBottomMenuAndScrollLine(){
+        //1.添加底线
+        let bottomLine = UIView()
+        bottomLine.backgroundColor = UIColor.black
+        let lineH : CGFloat = 0.5
+        bottomLine.frame = CGRect(x: 0, y: frame.height-lineH, width: frame.width, height: lineH)
+        addSubview(bottomLine)
+        
+        //2.添加scrollLine
+        //获取第一label
+        guard let firstLabel = titleLabels.first else {return}
+        firstLabel.textColor = UIColor.orange
+        
+        //2.2.设置scrollLine的属性
+        scrollView.addSubview(scrollLine)
+        scrollLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height-kScrollLineH, width: firstLabel.frame.width, height: firstLabel.frame.height)
     }
 }

@@ -8,16 +8,33 @@
 
 import UIKit
 
-private let kTitleView: CGFloat = 40
+private let kTitleViewH: CGFloat = 40
 
 class HomeViewController: UIViewController {
     
-    //makr:- 懒加载属性
+    //MARK:- 懒加载属性
     fileprivate lazy var pageTitleView: PageTitleView = {
-        let titleFrame = CGRect(x: 0, y: 64, width: kScreenH, height: kTitleView)
+        let titleFrame = CGRect(x: 0, y: 64, width: kScreenH, height: kTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
         return titleView
+    }()
+    
+    fileprivate lazy var pageContentView : PageContentView = {
+        //1.确定内容frame
+        let contentH = kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH
+        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: contentH)
+        
+        //2.确定所有的子控制器
+        var childVcs = [UIViewController]()
+        for _ in 0..<4{
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
+            childVcs.append(vc)
+        }
+        
+        let contentView = PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)
+        return contentView
     }()
 
     override func viewDidLoad() {
@@ -34,7 +51,7 @@ class HomeViewController: UIViewController {
 
 }
 
-//mark:-设置UI界面
+//MARK:- 设置UI界面
 extension HomeViewController{
     fileprivate func setupUI(){
         
@@ -46,6 +63,10 @@ extension HomeViewController{
         
         // 2.添加titleView
         view.addSubview(pageTitleView)
+        
+        //3.添加ContentView
+        view.addSubview(pageContentView)
+        pageContentView.backgroundColor = UIColor.purple
     }
     
     fileprivate func setupNavigationBar(){
