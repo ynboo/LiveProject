@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol PageTitleViewDelegate : class{
+    func pageTitleView(titleView : PageTitleView , selectedIndex index : Int)
+}
+
 private let kScrollLineH : CGFloat = 2.0
 
 class PageTitleView: UIView {
 
     //MARK:- 定义属性
+    fileprivate var currentIndex : Int = 0
     fileprivate var titles : [String]
+    weak var delegate : PageTitleViewDelegate?
     
     //MARK:- 懒加载属性
     fileprivate lazy var titleLabels : [UILabel] = [UILabel]()
@@ -87,6 +93,11 @@ extension PageTitleView{
             //4.将label添加到scrollView中
             scrollView.addSubview(label)
             titleLabels.append(label)
+            
+            //5.给Label添加手势
+            label.isUserInteractionEnabled = true
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(self.titleLabelClicked(tapGes:)))
+            label.addGestureRecognizer(tapGes)
         }
     }
     
@@ -106,5 +117,32 @@ extension PageTitleView{
         //2.2.设置scrollLine的属性
         scrollView.addSubview(scrollLine)
         scrollLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height-kScrollLineH, width: firstLabel.frame.width, height: firstLabel.frame.height)
+    }
+}
+
+//MARK:- 监听Label的事件
+extension PageTitleView{
+    @objc fileprivate func titleLabelClicked(tapGes : UITapGestureRecognizer){
+        //1.获取当前Label
+        guard let currentLabel = tapGes.view as? UILabel else { return }
+        
+        //2.获取之前的Label
+        let oldLabel = titleLabels[currentIndex]
+        
+        //3.切换文字的颜色
+        currentLabel.textColor = UIColor.orange
+        oldLabel.textColor = UIColor.darkGray
+        
+        //4.保存最新Label的下标值
+        currentIndex = currentLabel.tag
+        
+        //5.滚动条位置发生变化
+        let scrollLineX = CGFloat(currentLabel.tag) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.15) { 
+            self.scrollLine.frame.origin.x = scrollLineX
+        };
+        
+        //6.通知代理
+        delegate?.pageTitleView(titleView: self, selectedIndex: currentIndex)
     }
 }
